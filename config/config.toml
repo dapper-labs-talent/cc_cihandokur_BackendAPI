@@ -1,0 +1,19 @@
+[postgres]
+host = "postgres"
+port = "5432"
+database = "devlab"
+user = "devlab"
+pass = "p@s2word"
+localDataPath = "/Volumes/Storage/sql/data"
+
+[Jwt]
+secretKey = "sup3rs3cr3tk3y"
+expDurHour = 1
+header = "X-Authentication-Token"
+
+[server]
+host = "0.0.0.0"
+port = 9090
+
+[log]
+level = "info"

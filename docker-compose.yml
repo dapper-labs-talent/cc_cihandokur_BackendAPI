@@ -1,0 +1,44 @@
+version: '3.9'
+
+name: devlab
+
+services:
+  api:
+    build: 
+      context: .
+      dockerfile: ./Dockerfile
+    depends_on:
+      - postgres  
+    ports:
+      - 9090:9090
+    links:
+      - postgres:postgres
+    
+  postgres:
+    image: postgres:latest
+    deploy:
+      restart_policy:
+        condition: on-failure
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_PORT: "5432"
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+    volumes:
+      - ${POSTGRES_LOCAL_DATA_PATH}:/var/lib/postgresql/data
+  
+  pgAdmin:
+    image: dpage/pgadmin4
+    depends_on:
+      - postgres
+    environment:
+      PGADMIN_LISTEN_PORT: "5436"
+      PGADMIN_DEFAULT_EMAIL: dev@devlab.dev
+      PGADMIN_DEFAULT_PASSWORD: d3vl@b
+    ports:
+      - "5436:5436"
+    links:
+      - postgres:postgres
+  
