@@ -10,7 +10,7 @@ Did you learn anything new?
 Is there anything you would have liked to implement but didn't have the time to?
 > I wish I could write better test methods. 
   I would like to encrypt and put the email information in the JWT token.
-  Also, using go-pg/pg instead of gorm for DB.
+  Also, adding a log system and using go-pg/pg instead of gorm for DB.
 
 What are the security holes (if any) in your system? If there are any, how would you fix them?
 > It would be a more secure system if the SignUp information sent by the client had UUID information.
